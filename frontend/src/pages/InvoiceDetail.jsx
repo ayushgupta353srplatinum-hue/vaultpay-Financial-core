@@ -48,7 +48,7 @@ const InvoiceDetail = () => {
    }, [id, user.token, navigate]);
 
    const handleDownload = () => {
-      const downloadUrl = `http://localhost:5000/api/invoices/download/${id}?token=${user.token}`;
+      const downloadUrl = `https://vaultpay-financial-core.onrender.com/api/invoices/download/${id}?token=${user.token}`;
 
       window.open(downloadUrl, "_blank");
    };

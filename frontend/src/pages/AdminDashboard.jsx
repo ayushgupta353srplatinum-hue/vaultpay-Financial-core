@@ -25,7 +25,7 @@ const AdminDashboard = () => {
          const token = user?.token;
 
          const invoiceRes = await axios.get(
-            "http://localhost:5000/api/invoices",
+            "https://vaultpay-financial-core.onrender.com/api/invoices",
             {
                headers: {
                   Authorization: `Bearer ${token}`,
@@ -36,7 +36,7 @@ const AdminDashboard = () => {
          setInvoices(invoiceRes.data || []);
 
          const clientRes = await axios.get(
-            "http://localhost:5000/api/admin/clients",
+            "https://vaultpay-financial-core.onrender.com/api/admin/clients",
             {
                headers: {
                   Authorization: `Bearer ${token}`,
@@ -75,7 +75,7 @@ const AdminDashboard = () => {
          const token = user?.token;
 
          await axios.post(
-            "http://localhost:5000/api/invoices/create",
+            "https://vaultpay-financial-core.onrender.com/api/invoices/create",
             {
                client: selectedClientId,
                amount: Number(amount),

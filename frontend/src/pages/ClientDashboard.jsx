@@ -21,7 +21,7 @@ const ClientDashboard = () => {
             JSON.parse(localStorage.getItem("user"))?.token;
 
          const res = await axios.get(
-            "http://localhost:5000/api/invoices",
+            "https://vaultpay-financial-core.onrender.com/api/invoices",
             {
                headers: {
                   Authorization: `Bearer ${token}`,
@@ -59,7 +59,7 @@ const ClientDashboard = () => {
             JSON.parse(localStorage.getItem("user"))?.token;
 
          const response = await axios.post(
-            `http://localhost:5000/api/payments/checkout/${invoiceId}`,
+            `https://vaultpay-financial-core.onrender.com/api/payments/checkout/${invoiceId}`,
             {},
             {
                headers: {
@@ -87,7 +87,7 @@ const ClientDashboard = () => {
             JSON.parse(localStorage.getItem("user"))?.token;
 
          const response = await axios.get(
-            `http://localhost:5000/api/invoices/download/${invoiceId}`,
+            `https://vaultpay-financial-core.onrender.com/api/invoices/download/${invoiceId}`,
             {
                headers: {
                   Authorization: `Bearer ${token}`,

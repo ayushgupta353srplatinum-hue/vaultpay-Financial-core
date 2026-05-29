@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-   "http://localhost:5000/api/auth";
+   "https://vaultpay-financial-core.onrender.com/api/auth";
 
 const login = async (
    userData

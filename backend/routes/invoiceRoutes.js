@@ -15,7 +15,7 @@ const {
 
 
 // CREATE INVOICE (ADMIN ONLY)
-// Path: POST http://localhost:5000/api/invoices/create
+// Path: POST https://vaultpay-financial-core.onrender.com/api/invoices/create
 router.post(
    "/create",
    protect,
@@ -24,7 +24,7 @@ router.post(
 );
 
 // GET ALL INVOICES (Client/Admin verification loaded dynamically inside controller)
-// Path: GET http://localhost:5000/api/invoices/
+// Path: GET https://vaultpay-financial-core.onrender.com/api/invoices/
 router.get(
    "/",
    protect,
@@ -32,7 +32,7 @@ router.get(
 );
 
 // GET SINGLE INVOICE (CRITICAL TRACK B REQUIREMENT: IDOR protection resides here)
-// Path: GET http://localhost:5000/api/invoices/:id
+// Path: GET https://vaultpay-financial-core.onrender.com/api/invoices/:id
 router.get(
    "/:id",
    protect,
@@ -40,7 +40,7 @@ router.get(
 );
 
 // DOWNLOAD AUTOMATED PDF RECEIPT
-// Path: GET http://localhost:5000/api/invoices/download/:id
+// Path: GET https://vaultpay-financial-core.onrender.com/api/invoices/download/:id
 router.get(
    "/download/:id",
    protect,

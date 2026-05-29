@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API =
-   "http://localhost:5000/api/invoices";
+   "https://vaultpay-financial-core.onrender.com/api/invoices";
 
 const getInvoices =
    async (token) => {
