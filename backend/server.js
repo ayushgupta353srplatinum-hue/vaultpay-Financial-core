@@ -11,7 +11,7 @@ const connectDB = require("./config/db");
 // ROUTE IMPORTS
 const authRoutes = require("./routes/authRoutes");
 const testRoutes = require("./routes/testRoutes");
-const adminRoutes = require("./routes/adminRoutes"); // Iske andar hamara clients endpoint kaam karega
+const adminRoutes = require("./routes/adminRoutes");
 const clientRoutes = require("./routes/clientRoutes");
 const invoiceRoutes = require("./routes/invoiceRoutes");
 const paymentRoutes = require("./routes/paymentRoutes");
@@ -22,29 +22,40 @@ connectDB();
 
 const app = express();
 
-// MIDDLEWARE SETUP
+// CORS
 app.use(cors());
 
-// REQUIREMENT 2: Stripe Webhook Route Must be Before express.json()
-// Kyunki Stripe ko signature verification ke liye raw body chahiye hoti hai
-app.use("/api/webhooks", webhookRoutes);
+/*
+========================================
+STRIPE WEBHOOK RAW BODY PARSER
+========================================
+IMPORTANT:
+Ye express.json() se PEHLE hona chahiye
+warna Stripe signature verify nahi karega
+*/
+app.use(
+   "/api/webhooks",
+   express.raw({ type: "application/json" }),
+   webhookRoutes
+);
 
+// NORMAL JSON PARSER
 app.use(express.json());
 
-// ROUTE HANDLERS
+// ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/test", testRoutes);
-app.use("/api/admin", adminRoutes); // Handles: /api/admin/clients
+app.use("/api/admin", adminRoutes);
 app.use("/api/client", clientRoutes);
 app.use("/api/invoices", invoiceRoutes);
 app.use("/api/payments", paymentRoutes);
 
-// GLOBAL HOME ROUTE
+// HOME ROUTE
 app.get("/", (req, res) => {
    res.send("VaultPay API Running");
 });
 
-// SERVER LEASE
+// SERVER
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
