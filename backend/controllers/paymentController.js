@@ -53,11 +53,8 @@ const createCheckoutSession = async (
 
             mode: "payment",
 
-            success_url:
-               "http://localhost:5173/payment-success",
-
-            cancel_url:
-               "http://localhost:5173/payment-cancel",
+          success_url: "https://vaultpay-financial-core.vercel.app/payment-success",
+cancel_url: "https://vaultpay-financial-core.vercel.app/client/dashboard",
 
             metadata: {
                invoiceId: invoice._id.toString(),
